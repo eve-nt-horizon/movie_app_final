@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:movie/builders/tmdb_request_builder.dart';
 import 'package:movie/models/tmdb/tmdb_movie_basic.dart';
 import 'package:movie/models/tmdb/tmdb_movies_response.dart';
+import 'package:stacked/stacked.dart';
 
 final String _API_ACCESS_TOKEN =
     'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTMxOTk1MmRkZmY1OTMyYjk3MGM4NWVkYTYwYmNiNiIsInN1YiI6IjY2NTQwYWNkZTA5OTk4NjM2YjRjZDI1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lJtYvX_j1nAGaebMv9XQwQIQFU5T3jDRqCYSlAcFS-o';
@@ -19,7 +20,7 @@ class ApiService {
       },
     ),
   );
-  Set<String> genres = {};
+  ReactiveList<String> genres = ReactiveList();
   Future<List<TMDBMovieBasic>> search(String query) async {
     Uri uri = TMDBRequestBuilder.buildWithSearchQuery(query);
     var res = await dio.get(uri.toString());
