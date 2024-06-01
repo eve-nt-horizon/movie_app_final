@@ -19,7 +19,7 @@ class ApiService {
       },
     ),
   );
-
+  Set<String> genres = {};
   Future<List<TMDBMovieBasic>> search(String query) async {
     Uri uri = TMDBRequestBuilder.buildWithSearchQuery(query);
     var res = await dio.get(uri.toString());
@@ -38,5 +38,11 @@ class ApiService {
     }
     Uri uri = TMDBRequestBuilder.posterPath(posterPath);
     return uri.toString();
+  }
+
+  Future allGenres() async {
+    Uri uri = TMDBRequestBuilder.allGenres();
+    var res = await dio.get(uri.toString());
+    return res.data;
   }
 }

@@ -15,6 +15,7 @@ class Genres extends StatelessWidget {
       "Horror",
       "Animation"
     ];
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
       height: 36,

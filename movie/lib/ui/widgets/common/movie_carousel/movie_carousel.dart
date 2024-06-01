@@ -23,14 +23,13 @@ class MovieCarousel extends StackedView<MovieCarouselModel> {
               viewModel.setCurrentPage(value);
             },
             controller: viewModel.pageController,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             itemCount: viewModel.movieList.length,
             itemBuilder: (context, index) =>
                 MovieCard(movie: viewModel.movieList[index])),
       ),
     );
   }
-
 
   @override
   MovieCarouselModel viewModelBuilder(

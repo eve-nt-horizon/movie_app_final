@@ -4,7 +4,6 @@ import 'package:movie/models/tmdb/tmdb_movie_basic.dart';
 import 'package:movie/services/movie_carousel_service.dart';
 import 'package:stacked/stacked.dart';
 
-
 final _movieCarouselService = locator<MovieCarouselService>();
 
 class MovieCarouselModel extends StreamViewModel {

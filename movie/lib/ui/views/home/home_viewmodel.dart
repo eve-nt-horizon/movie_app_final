@@ -14,12 +14,7 @@ class HomeViewModel extends BaseViewModel {
   Future search() async {
     if (_searchController.text.isEmpty) return;
     List<TMDBMovieBasic> res = await _apiService.search(_searchController.text);
-    print(res);
-  }
-
-  Future runStartupLogic() async {
-    List<TMDBMovieBasic> movies = await _apiService.popularMovies();
-    _movieCarouselService.movieList.assignAll(movies);
+    _movieCarouselService.movieList.assignAll(res);
   }
 
   @override

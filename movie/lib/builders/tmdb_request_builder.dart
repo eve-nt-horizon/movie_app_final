@@ -1,21 +1,8 @@
-import 'package:dio/dio.dart';
-import 'package:movie/builders/builder.dart';
 import 'package:movie/builders/https_uri_builder.dart';
-
-final _API_ACCESS_TOKEN =
-    'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTMxOTk1MmRkZmY1OTMyYjk3MGM4NWVkYTYwYmNiNiIsInN1YiI6IjY2NTQwYWNkZTA5OTk4NjM2YjRjZDI1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lJtYvX_j1nAGaebMv9XQwQIQFU5T3jDRqCYSlAcFS-o';
-BaseOptions options = BaseOptions(
-  headers: {
-    'Accept': 'Application/Json',
-    'Authorization': 'Bearer $_API_ACCESS_TOKEN',
-    'Host': 'api.themoviedb.org'
-  },
-);
 
 class TMDBRequestBuilder {
   static HttpsUriBuilder uriBuilder = HttpsUriBuilder.create();
 
-  final _dio = Dio(options);
   static const String _baseUrl = 'api.themoviedb.org';
   static const String _imgUrl = 'image.tmdb.org';
   static Uri buildWithGenres(List<int> genres) {
@@ -48,6 +35,13 @@ class TMDBRequestBuilder {
     return uriBuilder
         .setAuthority(_imgUrl)
         .setPath('/t/p/original/$posterPath')
+        .build();
+  }
+
+  static Uri allGenres() {
+    return uriBuilder
+        .setAuthority(_baseUrl)
+        .setPath('/3/genre/movie/list')
         .build();
   }
 }
